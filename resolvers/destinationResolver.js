@@ -16,6 +16,7 @@ export default {
       /* if (!user) {
         throw new AuthenticationError("You are not authenticated");
       }*/
+      console.log(args);
       const newDestination = new Destination(args);
       console.log(newDestination);
       return newDestination.save();

@@ -18,6 +18,6 @@ export default gql`
     coordinates: [Float]
   }
   extend type Mutation {
-    addDestination(name: String!, Location: [NewLocation]): Destination
+    addDestination(name: String!, Location: NewLocation): Destination
   }
 `;
