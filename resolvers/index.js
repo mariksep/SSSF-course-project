@@ -1,3 +1,4 @@
 import destinationResolver from "./destinationResolver.js";
+import attractionResolver from "./attractionResolver.js";
 
-export default [destinationResolver];
+export default [destinationResolver, attractionResolver];

@@ -1,4 +1,5 @@
 import destinationSchema from "./destinationSchema.js";
+import attractionSchema from "./attractionSchema.js";
 
 import { gql } from "apollo-server-express";
 
@@ -11,4 +12,4 @@ const linkSchema = gql`
   }
 `;
 
-export default [linkSchema, destinationSchema];
+export default [linkSchema, destinationSchema, attractionSchema];

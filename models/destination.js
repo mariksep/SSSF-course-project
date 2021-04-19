@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const destinationSchema = new Schema({
   name: String,
-  Location: {
+  DestinationLocation: {
     type: {
       type: String,
       enum: ["Point"],
@@ -13,10 +13,10 @@ const destinationSchema = new Schema({
       type: [Number],
     },
   },
-  /*Attractions: {
+  Attraction: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Attractions",
-  },*/
+    ref: "Attraction",
+  },
 });
 
 export default mongoose.model("Destination", destinationSchema);

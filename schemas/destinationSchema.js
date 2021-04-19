@@ -8,16 +8,20 @@ export default gql`
   type Destination {
     id: ID
     name: String
-    Location: Location
+    DestinationLocation: DestinationLocation
+    Attractions: [Attraction]
   }
-  type Location {
+  type DestinationLocation {
     type: String
     coordinates: [Float]
   }
-  input NewLocation {
+  input NewDestinationLocation {
     coordinates: [Float]
   }
   extend type Mutation {
-    addDestination(name: String!, Location: NewLocation): Destination
+    addDestination(
+      name: String!
+      DestinationLocation: NewDestinationLocation
+    ): Destination
   }
 `;
