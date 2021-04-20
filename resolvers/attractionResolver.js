@@ -27,10 +27,9 @@ export default {
       console.log(newAttraction);
       return newAttraction.save();
     },
-    /*
-    modifyAnimal: (parent, args) => {
-      console.log("animalResolver, modifyAnimal", args);
-      return Animal.findByIdAndUpdate(args.id, args);
-    },*/
+    modifyAttraction: (parent, args) => {
+      console.log("attractionResolver, modifyAttraction", args);
+      return Attraction.findByIdAndUpdate(args.id, args);
+    },
   },
 };

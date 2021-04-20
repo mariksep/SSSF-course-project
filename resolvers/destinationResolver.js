@@ -21,10 +21,9 @@ export default {
       console.log(newDestination);
       return newDestination.save();
     },
-    /*
-    modifyAnimal: (parent, args) => {
-      console.log("animalResolver, modifyAnimal", args);
-      return Animal.findByIdAndUpdate(args.id, args);
-    },*/
+    modifyDestination: (parent, args) => {
+      console.log("destinationResolvers, modifyDestination", args);
+      return Destination.findByIdAndUpdate(args.id, args);
+    },
   },
 };
