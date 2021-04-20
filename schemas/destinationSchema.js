@@ -23,5 +23,10 @@ export default gql`
       name: String!
       DestinationLocation: NewDestinationLocation
     ): Destination
+    modifyDestination(
+      id: ID!
+      name: String
+      DestinationLocation: NewDestinationLocation
+    ): Destination
   }
 `;

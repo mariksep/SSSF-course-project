@@ -26,5 +26,11 @@ export default gql`
       destinationID: ID!
       AttractionLocation: NewAttractionLocation
     ): Attraction
+    modifyAttraction(
+      id: ID!
+      type: String
+      name: String
+      AttractionLocation: NewAttractionLocation
+    ): Attraction
   }
 `;
