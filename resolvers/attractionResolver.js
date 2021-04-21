@@ -1,5 +1,6 @@
 import Attraction from "../models/attraction.js";
 import { AuthenticationError } from "apollo-server-express";
+import { UserInputError } from "apollo-server-errors";
 
 export default {
   Destination: {
@@ -30,6 +31,18 @@ export default {
     modifyAttraction: (parent, args) => {
       console.log("attractionResolver, modifyAttraction", args);
       return Attraction.findByIdAndUpdate(args.id, args);
+    },
+    deleteAttraction: async (parent, args) => {
+      try {
+        console.log(args);
+        const { id } = args;
+        await Attraction.findByIdAndDelete(id);
+        return id;
+      } catch (error) {
+        throw new UserInputError(
+          `Error while deleting a station: ${error.message}`
+        );
+      }
     },
   },
 };

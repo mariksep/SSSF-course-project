@@ -28,5 +28,6 @@ export default gql`
       name: String
       DestinationLocation: NewDestinationLocation
     ): Destination
+    deleteDestination(id: ID!): Destination
   }
 `;

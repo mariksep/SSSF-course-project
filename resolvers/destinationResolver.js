@@ -25,5 +25,17 @@ export default {
       console.log("destinationResolvers, modifyDestination", args);
       return Destination.findByIdAndUpdate(args.id, args);
     },
+    deleteDestination: async (parent, args) => {
+      try {
+        console.log(args);
+        const { id } = args;
+        await Destination.findByIdAndDelete(id);
+        return id;
+      } catch (error) {
+        throw new UserInputError(
+          `Error while deleting a station: ${error.message}`
+        );
+      }
+    },
   },
 };
