@@ -32,5 +32,6 @@ export default gql`
       name: String
       AttractionLocation: NewAttractionLocation
     ): Attraction
+    deleteAttraction(id: ID!): Attraction
   }
 `;
