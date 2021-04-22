@@ -11,19 +11,31 @@ export default {
     },
   },
   Mutation: {
-    addDestination: (parent, args, { user }) => {
-      console.log("destinationResolver, addDestination", args, user);
-      /* if (!user) {
-        throw new AuthenticationError("You are not authenticated");
-      }*/
-      console.log(args);
-      const newDestination = new Destination(args);
-      console.log(newDestination);
+    addDestination: async (parent, args, { user }) => {
+      try {
+        console.log("destinationResolver, addDestination", args, user);
+        /* if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }*/
+        console.log(args);
+        const newDestination = new Destination(args);
+        console.log(newDestination);
+      } catch (error) {
+        throw new UserInputError(
+          `Error while adding a new destination: ${error.message}`
+        );
+      }
       return newDestination.save();
     },
-    modifyDestination: (parent, args) => {
-      console.log("destinationResolvers, modifyDestination", args);
-      return Destination.findByIdAndUpdate(args.id, args);
+    modifyDestination: async (parent, args) => {
+      try {
+        console.log("destinationResolvers, modifyDestination", args);
+        return Destination.findByIdAndUpdate(args.id, args);
+      } catch (error) {
+        throw new UserInputError(
+          `Error while adding a modify destination: ${error.message}`
+        );
+      }
     },
     deleteDestination: async (parent, args) => {
       try {
@@ -33,7 +45,7 @@ export default {
         return id;
       } catch (error) {
         throw new UserInputError(
-          `Error while deleting a station: ${error.message}`
+          `Error while deleting a destination: ${error.message}`
         );
       }
     },
