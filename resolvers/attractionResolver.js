@@ -18,19 +18,32 @@ export default {
     },
   },
   Mutation: {
-    addAttraction: (parent, args, { user }) => {
-      console.log("destinationResolver, addDestination", args, user);
-      /* if (!user) {
+    addAttraction: async (parent, args, { user }) => {
+      try {
+        console.log("destinationResolver, addDestination", args, user);
+        /* if (!user) {
         throw new AuthenticationError("You are not authenticated");
       }*/
-      console.log(args);
-      const newAttraction = new Attraction(args);
-      console.log(newAttraction);
+        console.log(args);
+        const newAttraction = new Attraction(args);
+        console.log(newAttraction);
+      } catch (error) {
+        throw new UserInputError(
+          `Error while adding a new Attraction: ${error.message}`
+        );
+      }
       return newAttraction.save();
     },
-    modifyAttraction: (parent, args) => {
-      console.log("attractionResolver, modifyAttraction", args);
-      return Attraction.findByIdAndUpdate(args.id, args);
+    modifyAttraction: async (parent, args) => {
+      try {
+        console.log("attractionResolver, modifyAttraction", args);
+        await Attraction.findByIdAndUpdate(args.id, args);
+      } catch (error) {
+        throw new UserInputError(
+          `Error while adding a modify attraction: ${error.message}`
+        );
+      }
+      return args;
     },
     deleteAttraction: async (parent, args) => {
       try {
@@ -40,7 +53,7 @@ export default {
         return id;
       } catch (error) {
         throw new UserInputError(
-          `Error while deleting a station: ${error.message}`
+          `Error while deleting a attraction: ${error.message}`
         );
       }
     },
