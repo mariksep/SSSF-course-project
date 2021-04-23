@@ -2,37 +2,38 @@
 import jwt from "jsonwebtoken";
 import passport from "./strategy.js";
 
-export const login = (req, res) => {
+const login = (req, res) => {
   return new Promise((resolve, reject) => {
-    console.log("login auth", req.body);
     passport.authenticate(
       "local",
       { session: false },
-      async (error, user, info) => {
+      async (err, user, info) => {
         try {
-          if (error || !user) reject(info.message);
+          if (err || !user) reject(info.message);
 
-          req.login(user, { session: false }, async (error) => {
-            if (error) reject(error);
-
+          req.login(user, { session: false }, async (err) => {
+            if (err) reject(err);
+            // generate a signed son web token with the contents of user object and return it in the response
             const token = jwt.sign(user, "MyAwesomeSuperSecret");
-
             resolve({ user, token });
           });
-        } catch (error) {
-          reject({ message: error.message });
+        } catch (e) {
+          reject({ message: e.message });
         }
       }
     )(req, res);
   });
 };
 
-export const checkAuth = (req, res) => {
+const checkAuth = (req, res) => {
   return new Promise((resolve, _) => {
-    passport.authenticate("jwt", (error, user) => {
-      if (error || !user) resolve(false);
-
+    passport.authenticate("jwt", (err, user) => {
+      if (err || !user) {
+        resolve(false);
+      }
       resolve(user);
     })(req, res);
   });
 };
+
+export { login, checkAuth };

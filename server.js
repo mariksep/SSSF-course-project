@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express";
 import connectMongo from "./db/db.js";
 import schemas from "./schemas/index.js";
 import resolvers from "./resolvers/index.js";
+import { checkAuth } from "./passport/authenticate.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -17,11 +18,15 @@ dotenv.config();
       typeDefs: schemas,
       resolvers,
       context: async ({ req, res }) => {
-        if (req) {
+        try {
+          const user = await checkAuth(req, res);
           return {
             req,
             res,
+            user,
           };
+        } catch (error) {
+          console.log(`Context error: ${error.message}`);
         }
       },
     });

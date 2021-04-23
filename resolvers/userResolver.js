@@ -21,6 +21,12 @@ export default {
         throw new AuthenticationError(error.message);
       }
     },
+    user: async (parent, args, { user }) => {
+      if (!user) {
+        throw new AuthenticationError("You are not authenticated");
+      }
+      return await User.findById({ _id: args.id }).exec();
+    },
   },
   Mutation: {
     register: async (parent, args, context) => {

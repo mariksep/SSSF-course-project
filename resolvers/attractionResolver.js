@@ -19,13 +19,14 @@ export default {
   },
   Mutation: {
     addAttraction: async (parent, args, { user }) => {
+      let newAttraction;
       try {
         console.log("destinationResolver, addDestination", args, user);
-        /* if (!user) {
-        throw new AuthenticationError("You are not authenticated");
-      }*/
+        if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }
         console.log(args);
-        const newAttraction = new Attraction(args);
+        newAttraction = new Attraction(args);
         console.log(newAttraction);
       } catch (error) {
         throw new UserInputError(
@@ -34,8 +35,11 @@ export default {
       }
       return newAttraction.save();
     },
-    modifyAttraction: async (parent, args) => {
+    modifyAttraction: async (parent, args, { user }) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }
         console.log("attractionResolver, modifyAttraction", args);
         await Attraction.findByIdAndUpdate(args.id, args);
       } catch (error) {
@@ -45,8 +49,11 @@ export default {
       }
       return args;
     },
-    deleteAttraction: async (parent, args) => {
+    deleteAttraction: async (parent, args, { user }) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }
         console.log(args);
         const { id } = args;
         await Attraction.findByIdAndDelete(id);

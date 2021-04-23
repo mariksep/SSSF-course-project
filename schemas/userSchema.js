@@ -7,6 +7,7 @@ export default gql`
     token: String
   }
   extend type Query {
+    user(id: ID!): User
     login(username: String!, password: String!): User
   }
   extend type Mutation {
