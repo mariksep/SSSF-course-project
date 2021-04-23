@@ -1,5 +1,6 @@
 import Destination from "../models/destination.js";
 import { AuthenticationError } from "apollo-server-express";
+import { UserInputError } from "apollo-server-errors";
 
 export default {
   Query: {
@@ -12,23 +13,27 @@ export default {
   },
   Mutation: {
     addDestination: async (parent, args, { user }) => {
+      let newDestination;
       try {
         console.log("destinationResolver, addDestination", args, user);
-        /* if (!user) {
+        if (!user) {
           throw new AuthenticationError("You are not authenticated");
-        }*/
+        }
         console.log(args);
-        const newDestination = new Destination(args);
+        newDestination = await new Destination(args);
         console.log(newDestination);
       } catch (error) {
         throw new UserInputError(
           `Error while adding a new destination: ${error.message}`
         );
       }
-      return newDestination.save();
+      return await newDestination.save();
     },
-    modifyDestination: async (parent, args) => {
+    modifyDestination: async (parent, args, { user }) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }
         console.log("destinationResolvers, modifyDestination", args);
         return Destination.findByIdAndUpdate(args.id, args);
       } catch (error) {
@@ -37,8 +42,11 @@ export default {
         );
       }
     },
-    deleteDestination: async (parent, args) => {
+    deleteDestination: async (parent, args, { user }) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("You are not authenticated");
+        }
         console.log(args);
         const { id } = args;
         await Destination.findByIdAndDelete(id);
