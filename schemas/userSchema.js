@@ -5,6 +5,7 @@ export default gql`
     username: String!
     id: ID!
     token: String
+    Destinations: [Destination]
   }
   extend type Query {
     user(id: ID!): User
