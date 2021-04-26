@@ -10,6 +10,10 @@ const userModel = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Destination: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Destination",
+  },
 });
 
 export default mongoose.model("User", userModel);

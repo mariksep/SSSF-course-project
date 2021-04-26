@@ -3,6 +3,12 @@ import { AuthenticationError } from "apollo-server-express";
 import { UserInputError } from "apollo-server-errors";
 
 export default {
+  User: {
+    Destinations: async (parent, args) => {
+      console.log(parent);
+      return await Destination.find({ userID: parent._id });
+    },
+  },
   Query: {
     Destinations: (parent, args) => {
       return Destination.find();

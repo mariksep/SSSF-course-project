@@ -7,6 +7,7 @@ export default gql`
   }
   type Destination {
     id: ID
+    userID: ID
     name: String
     DestinationLocation: DestinationLocation
     Attractions: [Attraction]
@@ -21,6 +22,7 @@ export default gql`
   extend type Mutation {
     addDestination(
       name: String!
+      userID: ID!
       DestinationLocation: NewDestinationLocation
     ): Destination
     modifyDestination(

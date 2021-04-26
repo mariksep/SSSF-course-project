@@ -13,6 +13,10 @@ const destinationSchema = new Schema({
       type: [Number],
     },
   },
+  userID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   Attraction: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Attraction",
