@@ -4,6 +4,7 @@ export default gql`
   extend type Query {
     Destinations: [Destination]
     Destination(id: ID!): Destination
+    specifyDestinations(id: ID!): [Destination]
   }
   type Destination {
     id: ID

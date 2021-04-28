@@ -16,6 +16,9 @@ export default {
     Destination: (parent, args) => {
       return Destination.findById(args.id);
     },
+    specifyDestinations: async (parent, args) => {
+      return await Destination.find({ userID: args.id });
+    },
   },
   Mutation: {
     addDestination: async (parent, args, { user }) => {
