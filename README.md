@@ -1,5 +1,52 @@
 # SSSF-course-project
 
+# User
+### Register
+```
+mutation {
+  register(username: "username", password: "password") {
+    token
+    username
+    id
+  }
+}
+```
+### Login
+```
+{
+  login(username: "username", password: "password") {
+    token
+    id
+    username
+  }
+}
+```
+### Users Data
+```
+{
+  user(id: "users id") {
+    id
+    token
+    username
+    Destinations {
+      name
+      DestinationLocation {
+        coordinates
+      }
+      Attractions {
+        name
+        type
+        destinationID
+        AttractionLocation {
+          coordinates
+        }
+      }
+    }
+  }
+}
+
+```
+
 # Destinations
 
 ### Get all destination 
