@@ -1,6 +1,6 @@
 # SSSF-course-project
 
-# DESTINATIONS
+# Destinations
 
 ### Get all destination 
 ```
@@ -23,13 +23,11 @@
     }
   }
 }
-
 ```
 ### Get one destination
 ```
 {
-{
-  Destination(id: "608d4b88d94c6b0c94981306") {
+  Destination(id: "Destination id") {
     id
     name
     userID
@@ -47,5 +45,81 @@
     }
   }
 }
-
 ```
+### Delete destination  ( needs users token )
+```
+mutation {
+  deleteDestination(id: "Destination id") {
+    id
+  }
+}
+```
+### Add destionation ( userID is required and needs users token to headers )
+```
+mutation {
+  addDestination(
+    name: "Some name"
+    userID:"users id"
+    DestinationLocation: { coordinates: [lat, lng] }
+  ) {
+    name
+    DestinationLocation {
+      coordinates
+    }
+  }
+}
+```
+# Attractions 
+
+### Get one attraction
+```
+{
+  Attraction(id: "attraction id") {
+    id
+    destinationID
+    name
+    type
+    AttractionLocation{coordinates}
+  }
+}
+```
+### Add attraction ( destinationID is reguired and needs users token to headers. Type in front end is select object with options Food, Museum, Park and Landmark )
+```
+mutation {
+  addAttraction(
+    destinationID: "Destination id"
+    name: "some name"
+    type: "park"
+    AttractionLocation: { coordinates: [51.0, -0.09] }
+  ) {
+    name
+    id
+    AttractionLocation {
+      coordinates
+    }
+  }
+}
+```
+### Modify attraction (id is required and needs users token to headers )
+```
+mutation {
+  modifyAttraction(
+    id: "attraction id"
+    name: "Vessel Hudson yards"
+    type: "Park"
+  ) {
+    name
+    type
+  }
+}
+```
+### Delete attraction (id is required and needs users token to headers )
+```
+mutation {
+  deleteAttraction(id: "attraction id") {
+    id
+  }
+}
+```
+
+
