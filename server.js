@@ -31,8 +31,8 @@ dotenv.config();
       },
     });
     const app = express();
-    server.applyMiddleware({ app });
-    /* server.applyMiddleware({ app, path: "/graphql" });*/
+    // server.applyMiddleware({ app });
+    server.applyMiddleware({ app, path: "/graphql" });
 
     process.env.NODE_ENV = process.env.NODE_ENV || "development";
     if (process.env.NODE_ENV === "production") {
@@ -45,7 +45,7 @@ dotenv.config();
       localhost(app, 8000, 3000);
     }
 
-    /* app.listen({ port: 3000 }, () =>
+    /*app.listen({ port: 3000 }, () =>
       console.log(
         `🚀 Server ready at http://localhost:3000${server.graphqlPath}`
       )
