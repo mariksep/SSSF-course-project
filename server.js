@@ -5,6 +5,7 @@ import schemas from "./schemas/index.js";
 import resolvers from "./resolvers/index.js";
 import { checkAuth } from "./passport/authenticate.js";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 (async () => {
@@ -31,6 +32,7 @@ dotenv.config();
       },
     });
     const app = express();
+    app.use(cors());
     // server.applyMiddleware({ app });
     server.applyMiddleware({ app, path: "/graphql" });
 
