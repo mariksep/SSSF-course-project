@@ -117,6 +117,15 @@ mutation {
     }
   }
 }
+``` 
+### Modify destination ( destination id is required and needs users token to headers )
+```
+mutation {
+  modifyDestination(id: "destination id", name: "name" DestinationLocation: { coordinates: [lat, lng] } ) {
+    DestinationLocation{coordinates}
+    name
+  }
+}
 ```
 # Attractions 
 
