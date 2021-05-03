@@ -33,10 +33,10 @@ dotenv.config();
     });
     const app = express();
     app.use(cors());
-    // server.applyMiddleware({ app });
+    //server.applyMiddleware({ app });
     server.applyMiddleware({ app, path: "/graphql" });
 
-    process.env.NODE_ENV = process.env.NODE_ENV || "development";
+    /*  process.env.NODE_ENV = process.env.NODE_ENV || "development";
     if (process.env.NODE_ENV === "production") {
       console.log("prduction");
       const { default: production } = await import("./sec/production.js");
@@ -45,13 +45,13 @@ dotenv.config();
       console.log("localhost");
       const { default: localhost } = await import("./sec/localhost.js");
       localhost(app, 8000, 3000);
-    }
+    }*/
 
-    /*app.listen({ port: 3000 }, () =>
+    app.listen({ port: 3000 }, () =>
       console.log(
         `🚀 Server ready at http://localhost:3000${server.graphqlPath}`
       )
-    );*/
+    );
   } catch (e) {
     console.log("server error: " + e.message);
   }
