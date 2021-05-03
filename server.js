@@ -33,8 +33,8 @@ dotenv.config();
     });
     const app = express();
     app.use(cors());
-    //server.applyMiddleware({ app });
-    server.applyMiddleware({ app, path: "/graphql" });
+    server.applyMiddleware({ app });
+    //server.applyMiddleware({ app, path: "/graphql" });
 
     /*  process.env.NODE_ENV = process.env.NODE_ENV || "development";
     if (process.env.NODE_ENV === "production") {
