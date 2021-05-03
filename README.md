@@ -2,6 +2,11 @@
 ## Endpoint
 `https://env-3354092.jelastic.metropolia.fi/graphql
 `
+## Front
+`
+https://sssf-mapapp.netlify.app/
+`
+
 # User
 ### Register
 ```
