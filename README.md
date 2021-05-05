@@ -1,4 +1,8 @@
 # SSSF-course-project
+
+In the application, the user gets to add travel destinations and places they want to visit.
+ Destinations and attractions can be edited and deleted.
+
 ## Endpoint
 `https://env-3354092.jelastic.metropolia.fi/graphql
 `
