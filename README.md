@@ -4,14 +4,15 @@ The application is designed for people who want to plan their trip abroad.
 In the application, the user gets to add travel destinations and places they want to visit.
 Destinations and attractions can be edited and deleted.
 
-<b>Things to test:</b><br>
+<b>Things to test in frontend:</b><br>
 Login/register<br>
 Add destination<br>
- (location is required)
+ (location is required)<br>
 Add attraction to it<br> 
 Modify/delete attraction<br>
- (location is required)
+ (location is required for editing)<br>
 Modify/delete destination <br>
+(for editign destination you may need to sign in again to see the changes)<br>
 Test user:<br>
 username:mapapp<br> 
 password:mapapp_1
