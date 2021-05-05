@@ -1,7 +1,22 @@
 # SSSF-course-project
 
+The application is designed for people who want to plan their trip abroad.
 In the application, the user gets to add travel destinations and places they want to visit.
- Destinations and attractions can be edited and deleted.
+Destinations and attractions can be edited and deleted.
+
+<b>Things to test:</b><br>
+Login/register<br>
+Add destination<br>
+ (location is required)
+Add attraction to it<br> 
+Modify/delete attraction<br>
+ (location is required)
+Modify/delete destination <br>
+Test user:<br>
+username:mapapp<br> 
+password:mapapp_1
+
+
 
 ## Endpoint
 `https://env-3354092.jelastic.metropolia.fi/graphql
