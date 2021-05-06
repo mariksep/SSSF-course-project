@@ -1,6 +1,6 @@
 # SSSF-course-project
 
-The application is designed for people who want to plan their trip abroad.
+The application is designed for people who want to plan their trips.
 In the application, the user gets to add travel destinations and places they want to visit.
 Destinations and attractions can be edited and deleted.
 
